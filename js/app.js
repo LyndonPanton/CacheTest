@@ -41,4 +41,30 @@
 
 	let cacheTime = document.getElementById("cache-time");
 	cacheTime.textContent = `${day}/${month}/${year} @ ${hours}:${minutes}:${seconds}`;
+
+	let connction = document.getElementById("status");
+
+	function status(event) {
+		if (navigator.onLine) {
+			connction.textContent = "online";
+			connction.classList.remove("offline");
+			connction.classList.add("online");
+		} else {
+			connction.textContent = "offline";
+			connction.classList.remove("online");
+			connction.classList.add("offline");
+		}
+	}
+
+	window.addEventListener("online", function() {
+		console.log("online...");
+		status();
+	});
+
+	window.addEventListener("offline", function() {
+		console.log("offline...");
+		status();
+	});
+
+	status({type: "ready"});
 }());
