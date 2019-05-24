@@ -1,3 +1,44 @@
 (function() {
-	document.getElementById("copyright-year").textContent = (new Date()).getFullYear();
+	let hours;
+	let minutes;
+	let seconds;
+
+	if ((new Date()).getHours() < 10) {
+		hours = `0${(new Date()).getHours()}`;
+	} else {
+		hours = (new Date()).getHours();
+	}
+
+	if ((new Date()).getMinutes() < 10) {
+		minutes = `0${(new Date()).getMinutes()}`;
+	} else {
+		minutes = (new Date()).getMinutes();
+	}
+
+	if ((new Date()).getSeconds() < 10) {
+		seconds = `0${(new Date()).getSeconds()}`;
+	} else {
+		seconds = (new Date()).getSeconds();
+	}
+
+	let day;
+	let month;
+	let year = (new Date()).getFullYear();
+
+	if ((new Date()).getDate() < 10) {
+		day = `0${(new Date()).getDate()}`;
+	} else {
+		day = (new Date()).getDate();
+	}
+
+	if (((new Date()).getMonth() + 1) < 10) {
+		month = `0${Number((new Date()).getMonth()) + 1}`;
+	} else {
+		month = Number((new Date()).getMonth()) + 1;
+	}
+
+	document.getElementById("copyright-year").textContent = year;
+
+	let cacheTime = document.getElementById("cache-time");
+	cacheTime.textContent = `${day}/${month}/${year} @ ${hours}:${minutes}:${seconds}`;
 }());
